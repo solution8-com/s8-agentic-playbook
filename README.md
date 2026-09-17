@@ -60,7 +60,7 @@ Paste this into any Claude Code session and let it do the work:
 
 ```
 Install the Solution8 agentic playbook for me. It lives at
-github.com/solution8-com/agentic-playbook.
+github.com/solution8-com/s8-agentic-playbook.
 
 Add it as a plugin marketplace, install the s8-playbook plugin, then ask me to
 run /reload-plugins. Once that is done, use the onboarding skill to set it up
@@ -74,7 +74,7 @@ have and walks you through the rest.
 ### By hand
 
 ```
-/plugin marketplace add solution8-com/agentic-playbook
+/plugin marketplace add solution8-com/s8-agentic-playbook
 /plugin install s8-playbook@solution8
 ```
 

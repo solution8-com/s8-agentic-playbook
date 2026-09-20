@@ -73,7 +73,7 @@ or the user named it in the same breath as the repo. Read it off what you have a
 line rather than re-asking.
 
 Ask only about what is genuinely still open, and only where the answer changes what you build. The
-two that are rarely inferable are the **package manager** (`uv` vs `pip`, `bun` vs `npm`) and
+two that are rarely inferable are the **package manager** (`bun` vs `npm`) and
 **what kind of thing this is** - CLI, library, web service - because that shapes the layout.
 Everything else: take the ecosystem standard and say which one you took.
 
@@ -86,7 +86,7 @@ someone who does not know gets a recommendation they can take without bluffing.
 
 1. `git init` if needed; a language-appropriate `.gitignore`, plus `.claude/reports/` so generated reports never get committed.
 2. The minimal layout and manifest for the chosen stack.
-3. Install dependencies with the project's package manager (`bun`, `uv`).
+3. Install dependencies with the project's package manager.
 4. A formatter, a linter or type-checker, and a test runner - plus **one trivial passing
    test**, so the suite is green from the first commit and the gate has something to run.
 5. The commit gate (below).

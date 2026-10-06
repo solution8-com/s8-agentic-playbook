@@ -142,7 +142,11 @@ on every commit, block on failure, and auto-format so all output meets the proje
    a plain git hook, whatever fits.
 2. **Order the checks cheapest first**: format, then lint and type-check, then the fast test
    subset. Keep it quick; slow and end-to-end tests belong in CI.
-3. **Mirror the same checks in CI.** A local gate can be walked past with `git commit
+3. **Scan for secrets on every commit.** Add `gitleaks` to the gate: the `gitleaks` hook in the
+   `pre-commit` framework, or `gitleaks git --pre-commit --staged` in a plain hook. A secret
+   stays in the git history after you delete it, so the gate must stop it before the commit
+   exists. Whether a commit holds a secret is a yes-or-no question, so a tool answers it, not the agent.
+4. **Mirror the same checks in CI.** A local gate can be walked past with `git commit
    --no-verify`, so a gate that exists only locally is a suggestion. CI is where it becomes a
    rule. Every project gets this; on a small one it is a single workflow running the same commands,
    nothing more.
@@ -150,6 +154,10 @@ on every commit, block on failure, and auto-format so all output meets the proje
    **This step is load-bearing, not hygiene.** Work merges once its checks are
    green, so CI is the last thing standing between a change and trunk. A project whose CI
    runs nothing will merge anything.
+
+   **CI also scans the dependencies.** Run `osv-scanner` over the lockfiles. It reads every
+   ecosystem, not only JavaScript. A dependency can become vulnerable with no change to your
+   code, so this check belongs in CI and not in the commit gate.
 
    **On an existing repo, never edit a running CI workflow on your own.** Breaking one costs a
    failed release, not a failed check. Read it, say what it covers, and propose the missing steps
@@ -159,6 +167,7 @@ on every commit, block on failure, and auto-format so all output meets the proje
 
 **Do not report the gate as working until you have watched it work.** Make a commit that
 violates a rule and confirm it is rejected. Then make a clean one and confirm it passes.
+Commit a dummy key too, and confirm that `gitleaks` rejects it.
 
 A misconfigured gate is indistinguishable from a working one right up until something broken
 sails through months later. Installing it is not evidence; watching it block is.
@@ -260,6 +269,7 @@ Projects with code, additionally:
       the report states there is no suite and which paths that leaves unproven
 - [ ] The commit gate was seen blocking a bad commit and passing a clean one
 - [ ] CI runs the same checks as the gate
+- [ ] The gate runs `gitleaks`, and CI runs `osv-scanner`
 - [ ] `CLAUDE.md` records the stack, the verified commands and the gate
 
 ## Related skills

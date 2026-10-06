@@ -73,10 +73,19 @@ value.
 Write one self-contained triage board to `.claude/reports/<YYYY-MM-DD>-review-<scope-slug>.html`. Style it with the plugin's shared stylesheet, `<plugin root>/assets/report.css`, inlined into a `<style>` block so the file stays self-contained. Print the absolute path, then try to open it: `open` on macOS, `xdg-open` on Linux, `start ""` on Windows. Structure:
 
 - **Header** — repo, scope (mode + ref or paths), date, per-pass finding counts with the
-  found → confirmed tally from the verify stage, and any passes skipped with the reason.
+  found → confirmed tally from the verify stage, and any passes skipped with the reason. On a
+  whole codebase before a launch, also the two checks this suite does not cover (see the end of
+  this file).
 - **One section per pass** — findings as cards: severity chip (colour carries severity), title, `file:line`, evidence in mono, recommendation. Each card gets a "file as issue" checkbox and an "afk" toggle. The `authz-coverage` section also renders its full coverage table, not just the gaps.
 - **Footer** — an **Export** button that turns the checked cards into ready-to-run `gh issue create --title "…" --body "…"` commands in a copyable textarea (body = evidence + recommendation as markdown; add `--label afk` where toggled).
 
 ## 6. Offer to file issues
 
 After presenting the report, offer to file the blocker/high findings (plus any others the user names) as GitHub issues directly — issue text is markdown, GitHub-bound. Apply the AFK test to each issue you file: clear spec, self-contained, verifiable by the repo's own check, no human decision, secret, deploy, or visual judgement needed. Label the ones that pass `afk` so an autonomous agent can pick them up.
+
+## What this does not cover
+
+The passes read code. They do not run the app, so a clean board leaves two checks open:
+
+- **Rate limits.** The security pass reports a missing limit. Only requests against the running app prove that a limit works.
+- **A pentest.** An app that holds customer data needs a human pentest before anyone calls it audited. A clean board does not replace one.

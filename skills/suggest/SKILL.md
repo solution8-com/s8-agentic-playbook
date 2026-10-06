@@ -94,7 +94,8 @@ Neither is a step in the flow, and saying so is part of the job:
 
 - **Review.** `implement` already runs `/code-review low` over its own diff. A full `/code-review`
   in a fresh session is worth it at the end of a work session, and `review-suite` is for sweeping
-  a whole branch or codebase.
+  a whole branch or codebase. `/security-review` is the built-in security check over the same
+  diff. Advise it when the change touches login, permissions or user data.
 - **`verify-feature`.** `implement` now runs it itself whenever the diff touched
   UI, an endpoint or the database - so on work that came through the flow it is already done, and
   advising it again is noise. Advise it for a change that did **not** come through `implement`,

@@ -1,10 +1,10 @@
 {
   "name": "s8-playbook",
-  "version": "0.7.1",
+  "version": "0.8.0",
   "description": "Solution8's curated Claude Code skill set. A lean toolbox for planning, building and reviewing software with agents - most of it vendored from Matt Pocock's skills, a handful our own. Suggestions, not a workflow you have to follow.",
   "author": {
     "name": "Solution8",
-    "url": "https://solution8.dk"
+    "url": "https://solution8.ai"
   },
   "repository": "https://github.com/solution8-com/s8-agentic-playbook",
   "license": "MIT",

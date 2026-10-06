@@ -78,8 +78,8 @@ have and walks you through the rest.
 /plugin install s8-playbook@solution8
 ```
 
-The repo is private for now, so this works once you have been given access to it. Installing ties
-you to this repo - no reinstall, no version pinning.
+The repo is public, so this works for anyone. Installing ties you to this repo - no reinstall, no
+version pinning.
 
 **It keeps itself up to date.** New skills and fixes arrive without anyone running a command. To
 pull one immediately, `/plugin marketplace update solution8`.
@@ -108,9 +108,10 @@ Once the plugin is in:
    The first routes you - a new product runs for weeks, so `wayfinder` rather than `grill-me`.
    The second is not a routing question at all, and it says so: it answers from the modules
    instead, because most work needs no skill.
-3. **Run `gh auth login` if you have not.** Seven skills drive GitHub directly - issues,
-   branches and pull requests - so `pickup-issue`, `wayfinder`, `review-suite` and
-   `verify-feature` need it to do their job. `onboarding` and `suggest` both check it for you.
+3. **Run `gh auth login` if you have not.** Many skills drive GitHub directly - issues,
+   branches and pull requests - so `to-spec`, `to-issues`, `pickup-issue`, `wayfinder`,
+   `review-suite` and `verify-feature` need it to do their job. `onboarding` and `suggest` both
+   check it for you.
 4. **Read [`m0-the-agentic-loop`](./modules/m0-the-agentic-loop.md).** Ten minutes, and the rest of
    the set makes sense afterwards.
 5. **Run one real piece of work through the Main Flow.** Pick something small you were going to do
@@ -175,6 +176,8 @@ work already says where you are.
 Review has no skill of its own here, because Claude Code ships `/code-review`. Use
 `/code-review low` for a small change that matters, and at the end of a work session run the full
 pass over the diff in a fresh session. `review-suite` below is for a broad quality sweep.
+Claude Code also ships `/security-review`, which checks the pending changes on a branch for
+security problems. Run it before you merge a change that touches login, permissions or user data.
 
 `implement` runs `verify-feature` for you. When it commits, it looks at what the diff touched -
 UI, an endpoint, the database - and proves the behaviour before it hands the branch back.

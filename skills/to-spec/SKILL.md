@@ -56,6 +56,16 @@ Do NOT include specific file paths or code snippets. They may end up being outda
 
 Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it within the relevant decision and note briefly that it came from a prototype. Trim to the decision-rich parts — not a working demo, just the important bits.
 
+## Security and Tenancy Decisions
+
+Include this section only when the feature has users, roles or customer data. Leave it out otherwise.
+
+- Roles: each role, and the operations it may perform
+- Audit events: which actions get logged, so you can show later who did what and when
+- Tenant boundary, when the app serves more than one customer: where one customer's data stops and the next one's starts, and which layer enforces it
+
+These are cheap to decide before code exists and expensive to add later. Write an open decision here as an open question, not a guess.
+
 ## Testing Decisions
 
 A list of testing decisions that were made. Include:

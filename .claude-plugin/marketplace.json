@@ -2,7 +2,7 @@
   "name": "solution8",
   "owner": {
     "name": "Solution8",
-    "url": "https://solution8.dk"
+    "url": "https://solution8.ai"
   },
   "description": "Solution8's agentic coding playbook, as an installable Claude Code plugin.",
   "plugins": [

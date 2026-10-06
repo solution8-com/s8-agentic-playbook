@@ -37,8 +37,9 @@ and that is where the conflict actually lives. So open the text a plugin injects
 every session, and any skill text that claims priority over other skills. A plugin can instruct
 the model to always reach for its own skills first, in words strong enough that it will.
 
-Then check `gh auth status`. Two of the five Main Flow skills go through GitHub, and finding that
-out in week one is worse than finding it out now.
+Then check `gh auth status`. Three of the five Main Flow skills (`to-spec`, `to-issues` and
+`pickup-issue`) go through GitHub, and finding that out in week one is worse than finding it out
+now.
 
 ## 2. Show what you found
 

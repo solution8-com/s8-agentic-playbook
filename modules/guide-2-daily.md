@@ -106,9 +106,8 @@ the branch as it looked ten minutes ago ([*Verifying agent work*](m5-verifying-a
 
 ## When to watch and when to walk away
 
-[`to-issues`](../skills/to-issues/SKILL.md) puts labels on every ticket it writes, across three
-axes: what the work is, how bad it is if it breaks, and how much of it can run without you. That
-last one is the pair you act on daily. `hitl` means a person stays in the loop and is the default,
+[`to-issues`](../skills/to-issues/SKILL.md) puts one label on every ticket it writes: how much
+of the work can run without you. `hitl` means a person stays in the loop and is the default,
 so work only runs unattended when somebody said so on purpose. `afk` says the opposite, in advance.
 
 Marked the work `hitl`? Stay close and interrupt freely. Marked it `afk`? Let it run and

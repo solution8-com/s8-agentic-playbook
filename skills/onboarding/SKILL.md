@@ -130,6 +130,9 @@ Only mention what they actually have.
 >
 > Then you read it and merge it. That part stays yours.
 >
+> **Many tickets at once?** `orchestrate` runs steps 3 to 5 for all of them in parallel. It asks
+> you about anything still open, shows you its plan first, and ends with one pull request for you.
+>
 > **You do not have to start at step 1.** Start where your work already is:
 > nothing written down goes to step 1, an existing spec to step 3, an existing ticket to step 4.
 >

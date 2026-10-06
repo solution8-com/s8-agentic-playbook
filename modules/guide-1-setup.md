@@ -10,8 +10,11 @@ Written Aug 2026 against Claude Code as it is now.
 ```
 idea ->  grill-me  ->  to-spec  ->  to-issues  ->  pickup-issue  ->  implement  ->  YOU review & merge
          (interview)   (write it   (tickets       (read ticket,     (build, test,     (unless the ticket
-                        down)       + labels)      set up space)     verify, commit)    is labelled afk)
+                        down)       + labels)      set up space)     verify, commit)    is ready-for-agent)
 ```
+
+For a set of tickets, [`orchestrate`](../skills/orchestrate/SKILL.md) runs the pickup-issue and
+implement steps for every ticket, in parallel, and ends at one pull request for you.
 
 A suggestion, not a fixed sequence - skip what doesn't fit the task. Every step is a skill in the
 `s8-playbook` plugin; install commands live in the plugin's README. Where the work touched a UI, an
@@ -42,7 +45,7 @@ it from real corrections; [`setup-repo`](../skills/setup-repo/SKILL.md) seeds a 
   carries that state, so [`update-docs`](../skills/update-docs/SKILL.md) writes it here on purpose -
   a ledger, a handoff, and the project docs the work actually drifted from.
   [`start`](../skills/start/SKILL.md) reads all of them, in parallel, before it does anything else.
-- `CONTEXT.md` - a glossary, only if the project has real domain vocabulary.
+- `GLOSSARY.md` - a glossary, only if the project has real domain vocabulary.
 - `.claude/` - settings, and `reports/` where [`verify-feature`](../skills/verify-feature/SKILL.md)
   and [`review-suite`](../skills/review-suite/SKILL.md) write their reports.
 - **On a repo with code:** one command that runs the tests. The check step is only as good as what

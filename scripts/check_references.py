@@ -41,11 +41,12 @@ EXTERNAL = {
 RETIRED = {
     "setup-dev-repo",  # renamed to setup-repo 2026-08-25
     "guide",           # renamed to suggest 2026-08-25; note modules/guide-*.md are unrelated
+    "visual-spec",     # removed 2026-10-06, nobody used it
 }
 
 # Backticked paths that are shaped exactly like a slash command. A path with a second slash is
-# excluded by the pattern itself; these two are not, so they are named.
-NOT_COMMANDS = {"settings", "tmp"}
+# excluded by the pattern itself; these are not, so they are named.
+NOT_COMMANDS = {"settings", "tmp", "build-tool", "s8-playbook"}  # s8-playbook: the plugin prefix in /s8-playbook:orchestrate
 
 # Matched against the repo-relative path, not the bare filename.
 #

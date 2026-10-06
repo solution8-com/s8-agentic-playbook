@@ -93,4 +93,4 @@ and the `verify-feature` report path where there is one. Then anything your audi
 and anything the subagent left out.
 
 Then stop: hand the branch to the user to review and merge. Do not merge it yourself unless the
-user has said to for this work. An issue labelled `afk` counts as that permission.
+user has said to for this work. An issue labelled `ready-for-agent` counts as that permission.

@@ -41,7 +41,7 @@ time, and nobody is signed up to it. Skills are tools: reach for the ones that h
 
 | Part | Where | What it gives you |
 |---|---|---|
-| **Skills** | [`skills/`](./skills/) | 23 ready-made ways of working, installed as one plugin that keeps itself up to date |
+| **Skills** | [`skills/`](./skills/) | 26 ready-made ways of working, installed as one plugin that keeps itself up to date |
 | **Tools** | [`tools/`](./tools/README.md) | The CLIs and MCP servers worth having, with setup notes, plus a status line you can adopt as your own. None of it is required |
 | **Modules** | [`modules/`](./modules/) | Nine lessons on the principles, plus two hands-on guides. Read these to understand why the skills are shaped the way they are |
 
@@ -129,11 +129,11 @@ when they hit something that needs it.
 | Group | Skills | What it's for |
 |---|---|---|
 | [Project setup](#project-setup) | 2 | Getting set up, and standing up a project the rest of this can work in |
-| [Main Flow](#main-flow) | 5 | Idea to code that landed |
-| [Shape](#shape) | 4 | Working out what to build, before there is a spec to write |
-| [Utilities](#utilities) | 6 | Reached for mid-work, in whatever order the work demands |
-| [Context](#context) | 3 | Opening and closing a session, so the next one starts where this one stopped |
-| [Misc](#misc) | 3 | Occasional, and nobody has to use them |
+| [Main Flow](#main-flow) | 6 | Idea to code that landed |
+| [Shape](#shape) | 3 | Working out what to build, before there is a spec to write |
+| [Utilities](#utilities) | 7 | Reached for mid-work, in whatever order the work demands |
+| [Context](#context) | 4 | Opening and closing a session, so the next one starts where this one stopped |
+| [Misc](#misc) | 4 | Occasional, and nobody has to use them |
 
 ## Project setup
 
@@ -164,14 +164,23 @@ work already says where you are.
   anything is built.
 - **[`to-spec`](./skills/to-spec/SKILL.md)** - turn the conversation into a durable spec.
 - **[`to-issues`](./skills/to-issues/SKILL.md)** - break a spec into tracer-bullet vertical slices, published as GitHub issues with
-  their blocking edges and an `afk` (safe to run unattended) / `hitl` (human in the loop - the
-  default) label.
+  their blocking edges and a `ready-for-agent` (fully decided, an agent can build it) /
+  `needs-info` (a decision is still open - the default) label.
 - **[`pickup-issue`](./skills/pickup-issue/SKILL.md)** - read one issue and its comments, brief you in plain language before it
   touches the code, check the issue's claims against the live tree, sort out the worktree, then
   work out whether the issue is settled enough to build or needs a grill first. Writes no code and
   no plan of its own.
 - **[`implement`](./skills/implement/SKILL.md)** - build what was already decided. It never reopens the plan, which is what
   separates it from typing "build this" at a fresh agent.
+
+**Many tickets at once? `orchestrate` runs the flow for you.** Give it a spec or a set of issues
+and it guides the rest. It grills you on every `needs-info` ticket, shows you a plan of what runs
+in parallel and waits for your yes, then runs `pickup-issue` and `implement` for every ticket in
+parallel on one integration branch. At the end it verifies each ticket, runs `review-suite`, fixes
+what that finds, and hands you one pull request. You read it and merge, or tell it to merge.
+
+- **[`orchestrate`](./skills/orchestrate/SKILL.md)** - build a whole spec or a set of issues with parallel builder agents, ending
+  at one pull request for you.
 
 Review has no skill of its own here, because Claude Code ships `/code-review`. Use
 `/code-review low` for a small change that matters, and at the end of a work session run the full
@@ -193,7 +202,6 @@ Reach for it yourself on a change that did not come through the flow.
 - **[`prototype`](./skills/prototype/SKILL.md)** - build a throwaway to answer one design question before committing.
 - **[`research`](./skills/research/SKILL.md)** - chase a question back to primary sources in a background agent, written up with
   citations.
-- **[`visual-spec`](./skills/visual-spec/SKILL.md)** - render a spec as a self-contained HTML overview for a human to read.
 
 Claude Code also ships `design`, so there is nothing for us to add there. It opens an editable
 canvas you move things around on directly, and because it runs inside the repo the layout arrives
@@ -215,11 +223,13 @@ two or three variants built to compare.
   `implement` runs it for you when the diff touched UI, an endpoint or the database. Ask for an
   adversarial run when a whole feature wraps up, and it walks the state, permission and input
   matrices instead of the happy path.
-- **[`review-suite`](./skills/review-suite/SKILL.md)** - seven quality passes (dead code, duplication, security, authz, docs drift,
-  error handling, over-engineering) run in parallel, merged into one triage board with issue export.
+- **[`review-suite`](./skills/review-suite/SKILL.md)** - eight quality passes (dead code, duplication, security, authz, docs drift,
+  error handling, over-engineering, the repo's own coding standards) run in parallel, merged into one triage board with issue export.
   Run it when a big feature or branch wraps up.
 - **[`tdd`](./skills/tdd/SKILL.md)** - the red-green loop, and what makes a test worth keeping. `implement` calls it at
   pre-agreed seams; you can also invoke it yourself.
+- **[`pr`](./skills/pr/SKILL.md)** - write a pull request body: a small picture of the change, before-and-after evidence, and
+  how hard the merge is to undo. `orchestrate` uses it for its pull request.
 
 ## Misc
 
@@ -231,12 +241,14 @@ two or three variants built to compare.
 - **[`wizard`](./skills/wizard/SKILL.md)** - generate a script that walks a human through the steps only they can do:
   provisioning, credentials, one-off migrations. Secrets never touch the model.
 - **[`to-questionnaire`](./skills/to-questionnaire/SKILL.md)** - turn the questions someone else has to answer into a fillable form.
+- **[`writing-for-agents`](./skills/writing-for-agents/SKILL.md)** - how to write a skill, a `CLAUDE.md` or a doc an agent reads, so it
+  takes the same path every run.
 
 ## Context
 
 > Opening and closing a session, so the next one starts where this one stopped.
 
-A session is throwaway; what it learned is not. These three are how the knowledge outlives the
+A session is throwaway; what it learned is not. These four are how the knowledge outlives the
 session - which is what makes ending a tired one cost nothing. *The context window* is the module
 behind them.
 
@@ -256,11 +268,15 @@ behind them.
 Which write side you want is decided by the repo, not by preference - a stack manifest present
 means code. `suggest` reads it the same way.
 
+- **[`retro`](./skills/retro/SKILL.md)** - look back at a session and suggest changes to the agent's environment: a
+  pointer to a file it could not find, a check that would have caught its mistake, a rule for the
+  reviewer. Only you start it, by typing `/retro`.
+
 ## Reports
 
 > Every report looks the same on any machine.
 
-`verify-feature`, `review-suite`, `visual-spec` and `improve-codebase-architecture` write
+`verify-feature`, `review-suite`, `orchestrate` and `improve-codebase-architecture` write
 self-contained HTML to `.claude/reports/`, styled with `assets/report.css`. `setup-repo` adds
 that folder to `.gitignore`.
 

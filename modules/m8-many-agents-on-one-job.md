@@ -131,7 +131,8 @@ flowchart LR
 
 In our flow, [`to-issues`](../skills/to-issues/SKILL.md) writes tickets carrying their own blocking edges, so the order lives on
 the tickets rather than in your head, and [`pickup-issue`](../skills/pickup-issue/SKILL.md) re-checks one against the live code
-before anyone builds from it.
+before anyone builds from it. [`orchestrate`](../skills/orchestrate/SKILL.md) runs that whole pattern for you: parallel
+builders, one integration branch, one pull request.
 
 ## What you can do
 

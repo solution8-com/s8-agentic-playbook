@@ -98,7 +98,8 @@ does. Twice the code needs twice the checking.
 **Whoever hands it in owns it.** Send a change for review without reading it yourself, and you have
 delegated to your colleagues rather than to an agent. They could have prompted one themselves. In
 our flow [`implement`](../skills/implement/SKILL.md) stops at the commit and hands the branch to a person, unless the ticket
-carries an `afk` label saying it may merge on green.
+carries a `ready-for-agent` label saying it may merge on green. [`orchestrate`](../skills/orchestrate/SKILL.md) always
+hands a person one pull request.
 
 **And fast clean output no longer proves understanding.** Tidy code and a quick turnaround used to
 be hard to fake, because producing them took understanding. An agent produces both in seconds. So

@@ -19,7 +19,7 @@ setting it up for the first time, wants `onboarding`, which runs once and never 
      last session's note lives. Take the most recent one for this project. It may well be the only
      handoff there is.
    - `docs/ledger.md` - session history, key details, milestones. Read it even when a handoff exists.
-   - `CONTEXT.md` - the domain glossary, if the project keeps one. Many projects will not have one; that is fine.
+   - `GLOSSARY.md` - the domain glossary, if the project keeps one. Many projects will not have one; that is fine. Older repos call it `CONTEXT.md`.
    - `docs/adr/` - architecture decision records. If the directory exists, count the files. Under 10, read them all. 10 or more, read just the title line of each and open only the bodies whose titles look relevant to the task at hand.
    - If none of these exist, say so plainly and carry on with the task.
 

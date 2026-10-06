@@ -1,6 +1,6 @@
 {
   "name": "s8-playbook",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Solution8's curated Claude Code skill set. A lean toolbox for planning, building and reviewing software with agents - most of it vendored from Matt Pocock's skills, a handful our own. Suggestions, not a workflow you have to follow.",
   "author": {
     "name": "Solution8",
@@ -26,20 +26,23 @@
     "./skills/to-issues",
     "./skills/pickup-issue",
     "./skills/implement",
+    "./skills/orchestrate",
     "./skills/wayfinder",
     "./skills/prototype",
     "./skills/research",
-    "./skills/visual-spec",
     "./skills/improve-codebase-architecture",
     "./skills/diagnosing-bugs",
     "./skills/wait-what",
     "./skills/verify-feature",
     "./skills/review-suite",
     "./skills/wizard",
+    "./skills/pr",
+    "./skills/writing-for-agents",
     "./skills/to-questionnaire",
     "./skills/handoff",
     "./skills/tdd",
     "./skills/start",
-    "./skills/update-docs"
+    "./skills/update-docs",
+    "./skills/retro"
   ]
 }

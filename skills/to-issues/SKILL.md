@@ -10,7 +10,7 @@ Break a plan, spec, or conversation into a set of **tickets** — tracer-bullet 
 The tracker is whatever `.claude/tracker.md` names, and **GitHub issues via `gh` when that file is
 absent** - which is the common case and needs no setup. Where the note says `automation: none`,
 write the tickets out for a human to paste rather than pretending to publish them. Create the
-`afk` and `hitl` labels if they are missing.
+`needs-info` and `ready-for-agent` labels if they are missing.
 
 ## Process
 
@@ -62,7 +62,7 @@ Iterate until the user approves the breakdown.
 Publish the approved tickets. **How** depends on the tracker in use (GitHub issues via `gh` unless the repo says otherwise) — the tickets are the same either way, only the shape of the blocking edges changes:
 
 - **Local files** → write one file per ticket under `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists the numbers/titles it depends on. Use the per-ticket file template below — one ticket per file, never a single combined file.
-- **A real issue tracker (GitHub, Linear, …)** → publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. Use the platform's native blocking / sub-issue relationship where it has one; otherwise set each ticket's "Blocked by" to the blocking issues. Apply one autonomy label to each issue: `afk` for a small, decision-free slice, `hitl` where further grilling is plausible. Default to `hitl` - an optimistic `afk` means a real decision gets guessed instead of asked.
+- **A real issue tracker (GitHub, Linear, …)** → publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. Use the platform's native blocking / sub-issue relationship where it has one; otherwise set each ticket's "Blocked by" to the blocking issues. Apply one status label to each issue: `ready-for-agent` when the slice is fully decided and an agent can build it with no questions, `needs-info` when a decision is still open. Default to `needs-info` - an optimistic `ready-for-agent` means a real decision gets guessed instead of asked. The `orchestrate` skill grills the user on each `needs-info` issue and flips it to `ready-for-agent`.
 
 Work the **frontier**: any ticket whose blockers are all done. For a purely linear chain that means top to bottom.
 
@@ -76,7 +76,7 @@ Do NOT close or modify any parent issue.
 
 **Blocked by:** the numbers/titles of the tickets that gate this one, or "None — can start immediately".
 
-**Autonomy:** afk | hitl
+**Status:** needs-info | ready-for-agent
 
 - [ ] Acceptance criterion 1
 - [ ] Acceptance criterion 2

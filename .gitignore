@@ -2,7 +2,7 @@
 .DS_Store
 *.log
 
-# Skill output - verify-feature, review-suite and visual-spec write here
+# Skill output - verify-feature, review-suite and orchestrate write here
 .claude/reports/
 
 # dependencies / build (future-proofing)

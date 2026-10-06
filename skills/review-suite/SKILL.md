@@ -1,13 +1,15 @@
 ---
 name: review-suite
-description: Run selected review passes — over-engineering, dead-code, duplication, security, authz-coverage, docs-drift, error-handling — as parallel subagents over a diff, branch, or whole codebase, merged into one severity-coded HTML triage report with gh-issue export. Use when the user asks for any of these review types by name, wants a big feature/branch/PR/codebase swept for quality issues beyond a correctness review, or says "run the review suite".
+description: Run selected review passes — over-engineering, dead-code, duplication, security, authz-coverage, docs-drift, error-handling, standards — as parallel subagents over a diff, branch, or whole codebase, merged into one severity-coded HTML triage report with gh-issue export. Use when the user asks for any of these review types by name, wants a big feature/branch/PR/codebase swept for quality issues beyond a correctness review, or says "run the review suite".
 ---
 
 # Review Suite
 
 A series of focused review passes over one scope, each run as a read-only subagent in parallel, merged into a single triage report. Each pass lives in `passes/<name>.md` and is self-contained: a subagent needs nothing but its pass file, the scope, and the schema below.
 
-Passes: `over-engineering` · `dead-code` · `duplication` · `security` · `authz-coverage` · `docs-drift` · `error-handling`.
+Passes: `over-engineering` · `dead-code` · `duplication` · `security` · `authz-coverage` · `docs-drift` · `error-handling` · `standards`.
+
+The `standards` pass reads the repo's `CODING_STANDARDS.md` and a code-smell baseline. The `retro` skill proposes that file when a session shows the reviewer missing a judgement call.
 
 ## 1. Resolve the scope
 
@@ -17,9 +19,9 @@ One scope, resolved once, handed identically to every pass so all findings descr
 - **branch** — everything since trunk: `git diff <trunk>...HEAD` (three-dot, against the merge-base; trunk = the repo's default branch). A PR number resolves here too (`gh pr diff <n>`).
 - **codebase** — all tracked files, optionally narrowed to a path the user named.
 
-Infer the scope from what the user said ("this branch", "the whole repo", "PR 214"); ask once only when branch vs codebase is genuinely ambiguous. Before dispatching, prove the scope is real: the ref resolves (`git rev-parse`) and the diff or file list is non-empty. A bad ref fails here, not inside seven subagents.
+Infer the scope from what the user said ("this branch", "the whole repo", "PR 214"); ask once only when branch vs codebase is genuinely ambiguous. Before dispatching, prove the scope is real: the ref resolves (`git rev-parse`) and the diff or file list is non-empty. A bad ref fails here, not inside eight subagents.
 
-Which passes: the ones the user named; "all" or an unqualified "review this" on a big target means all seven. Skip a pass whose subject matter is absent from the scope (no entry points → skip `authz-coverage`; no docs touched or claimed → skip `docs-drift`) and say so in the report header.
+Which passes: the ones the user named; "all" or an unqualified "review this" on a big target means all eight. Skip a pass whose subject matter is absent from the scope (no entry points → skip `authz-coverage`; no docs touched or claimed → skip `docs-drift`) and say so in the report header.
 
 ## 2. Dispatch the passes in parallel
 
@@ -76,12 +78,12 @@ Write one self-contained triage board to `.claude/reports/<YYYY-MM-DD>-review-<s
   found → confirmed tally from the verify stage, and any passes skipped with the reason. On a
   whole codebase before a launch, also the two checks this suite does not cover (see the end of
   this file).
-- **One section per pass** — findings as cards: severity chip (colour carries severity), title, `file:line`, evidence in mono, recommendation. Each card gets a "file as issue" checkbox and an "afk" toggle. The `authz-coverage` section also renders its full coverage table, not just the gaps.
-- **Footer** — an **Export** button that turns the checked cards into ready-to-run `gh issue create --title "…" --body "…"` commands in a copyable textarea (body = evidence + recommendation as markdown; add `--label afk` where toggled).
+- **One section per pass** — findings as cards: severity chip (colour carries severity), title, `file:line`, evidence in mono, recommendation. Each card gets a "file as issue" checkbox and a "ready-for-agent" toggle. The `authz-coverage` section also renders its full coverage table, not just the gaps.
+- **Footer** — an **Export** button that turns the checked cards into ready-to-run `gh issue create --title "…" --body "…"` commands in a copyable textarea (body = evidence + recommendation as markdown; add `--label ready-for-agent` where toggled, and `--label needs-info` otherwise).
 
 ## 6. Offer to file issues
 
-After presenting the report, offer to file the blocker/high findings (plus any others the user names) as GitHub issues directly — issue text is markdown, GitHub-bound. Apply the AFK test to each issue you file: clear spec, self-contained, verifiable by the repo's own check, no human decision, secret, deploy, or visual judgement needed. Label the ones that pass `afk` so an autonomous agent can pick them up.
+After presenting the report, offer to file the blocker/high findings (plus any others the user names) as GitHub issues directly — issue text is markdown, GitHub-bound. Apply the ready-for-agent test to each issue you file: clear spec, self-contained, verifiable by the repo's own check, no human decision, secret, deploy, or visual judgement needed. Label the ones that pass `ready-for-agent` so an autonomous agent can pick them up, and the rest `needs-info`.
 
 ## What this does not cover
 

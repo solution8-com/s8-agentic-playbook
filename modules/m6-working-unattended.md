@@ -86,13 +86,15 @@ It is the same agent all day.
 
 - Decide it when you write the ticket, while the task is in front of you. Judging "can this run
   alone?" mid-afternoon lets risky work slip through on autopilot.
-- Two labels carry the decision in our flow. `afk` marks work meant to run unattended start to
-  finish, and `hitl` marks work where a human stays in the loop. **`hitl` is the default**, so
-  unattended is something you grant.
+- Two labels carry the decision in our flow. `ready-for-agent` marks work that is fully decided,
+  so an agent can build it start to finish alone, and `needs-info` marks work with an open
+  decision that a human answers first. **`needs-info` is the default**, so unattended is
+  something you grant.
 - One question picks the label: if the agent got this wrong and you only saw it at review,
   would that be annoying or dangerous? Work that is only annoying can run alone.
 - Freedom ends at the commit unless you granted the merge. The agent writes, tests and commits;
-  on `hitl` work a person merges, and an `afk` label is what says the agent may.
+  on `needs-info` work a person merges, and a `ready-for-agent` label is what says the agent may.
+  A whole set built by `orchestrate` always waits at a pull request for a person.
 
 ## What you can do
 
@@ -104,11 +106,11 @@ It is the same agent all day.
   trains the reflex.
 - **Move your attention to the exit.** Read the diff before you merge ([`verify-feature`](../skills/verify-feature/SKILL.md) for
   evidence, [`review-suite`](../skills/review-suite/SKILL.md) for a sweep).
-- **Label the work as you create it.** `hitl` work stops at the commit and the merge stays
-  yours; `afk` is the permission to merge on green. The label is the decision, so make it when
+- **Label the work as you create it.** `needs-info` work waits for your answers and the merge
+  stays yours; `ready-for-agent` is the permission to build it alone and merge on green. The label is the decision, so make it when
   you write the ticket rather than when the branch is waiting.
-- **Start unattended on work you would happily throw away.** A first `afk` run on something
-  disposable shows where your boundaries leak.
+- **Start unattended on work you would happily throw away.** A first `ready-for-agent` run on
+  something disposable shows where your boundaries leak.
 
 ## What to remember
 
@@ -118,5 +120,5 @@ It is the same agent all day.
 - Ask how far the damage spreads and whether you can undo it.
 - Autonomy belongs to the task. Set it when you write the ticket, and let human-in-the-loop be
   the default.
-- Unattended work still ends at a decision a person made. On `hitl` that decision is the merge
-  itself; on `afk` it was the label, granted before the work started.
+- Unattended work still ends at a decision a person made. On `needs-info` that decision is the
+  merge itself; on `ready-for-agent` it was the label, granted before the work started.

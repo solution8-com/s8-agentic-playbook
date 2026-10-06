@@ -86,8 +86,8 @@ Each of these means stop and steer, not "hope it works out":
 ## Finishing a change
 
 The flow stops at the commit on purpose: the agent builds and commits on its branch, and a
-*person* decides what happens next - unless the ticket carries an `afk` label, which is that
-decision made in advance ([*Working as a team*](m7-teams.md): you own what you hand in). From
+*person* decides what happens next - unless the ticket carries a `ready-for-agent` label, which
+lets [`implement`](../skills/implement/SKILL.md) merge on green ([*Working as a team*](m7-teams.md): you own what you hand in). From
 there, two good paths:
 
 - **Branch, then merge it yourself.** One feature branch per issue; when the work checks
@@ -98,6 +98,10 @@ there, two good paths:
   Right when several people share the code, or the project is big enough that "who checked
   this?" needs an answer.
 
+[`orchestrate`](../skills/orchestrate/SKILL.md) always ends at a pull request, whatever the labels
+say. Then you choose: read it and merge it yourself, or tell it to merge. Both are fine. The pull
+request is there so that the choice is yours.
+
 Pick per repo. The skills work with either - and with whatever your organisation's repo
 settings enforce. Protected branches and required reviews beat any written convention
 ([*What the agent reads*](m2-what-the-agent-reads.md): a rule is a wish, an automatic check is a
@@ -106,11 +110,13 @@ the branch as it looked ten minutes ago ([*Verifying agent work*](m5-verifying-a
 
 ## When to watch and when to walk away
 
-[`to-issues`](../skills/to-issues/SKILL.md) puts one label on every ticket it writes: how much
-of the work can run without you. `hitl` means a person stays in the loop and is the default,
-so work only runs unattended when somebody said so on purpose. `afk` says the opposite, in advance.
+[`to-issues`](../skills/to-issues/SKILL.md) puts one status label on every ticket it writes.
+`needs-info` means a decision is still open, and it is the default, so work only runs unattended
+when somebody decided everything on purpose. `ready-for-agent` means the ticket is fully decided
+and an agent can build it without asking. [`orchestrate`](../skills/orchestrate/SKILL.md) grills
+you on each `needs-info` ticket, flips it to `ready-for-agent`, then builds the whole set.
 
-Marked the work `hitl`? Stay close and interrupt freely. Marked it `afk`? Let it run and
-judge the result at the end instead - interrupting unattended work defeats the point of
+Working a `needs-info` ticket? Stay close and interrupt freely. Handed `ready-for-agent` work to
+an agent? Let it run and judge the result at the end instead - interrupting unattended work defeats the point of
 labelling it ([*Working unattended*](m6-working-unattended.md)). The label was the decision; make
 it when you create the ticket, not in the moment.

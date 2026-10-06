@@ -5,7 +5,7 @@ Usage: python3 build_report.py <manifest.json> <output.html>
 Embeds every screenshot as a base64 data URI so the output is a single file
 and the source screenshots can be deleted afterward. Styling comes from the
 plugin's shared assets/report.css, inlined so the report stays self-contained
-and so verify-feature, review-suite and visual-spec keep matching. The
+and so verify-feature, review-suite and orchestrate keep matching. The
 interactive layer below adds its own rules on top of that stylesheet.
 
 The manifest carries header fields, "flows" (UI flows with screenshots) and

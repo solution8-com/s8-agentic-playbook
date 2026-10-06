@@ -14,9 +14,7 @@ This skill takes the current conversation context and codebase understanding and
 Check with the user that these seams match their expectations.
 
 3. Write the spec using the template below, then publish it to the project issue tracker - the one
-`.claude/tracker.md` names, or GitHub issues via `gh` when there is no such file. Apply one autonomy label: `afk` for a small, decision-free slice, `hitl` where a decision is still plausible. Default to `hitl`.
-
-4. Offer `/visual-spec` if seeing the spec's shape would help the user review it. Skip it when it would not - a short spec with two seams does not need a diagram.
+`.claude/tracker.md` names, or GitHub issues via `gh` when there is no such file. Apply one status label: `ready-for-agent` when the spec is fully decided, `needs-info` when a decision is still open. Default to `needs-info`.
 
 <spec-template>
 

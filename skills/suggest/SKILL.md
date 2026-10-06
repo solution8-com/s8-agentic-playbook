@@ -45,6 +45,8 @@ Then match the situation to the skill, with one line on why:
 | Decisions settled, nothing written down | `to-spec` |
 | A spec that needs to become tickets | `to-issues` |
 | A ticket ready to build | `pickup-issue` (hands to `grill-me` or `implement`) |
+| A whole spec, or several tickets, to build together | `orchestrate` |
+| A pull request body to write | `pr` |
 | Something broken, failing, or slow | `diagnosing-bugs` |
 | "Prove this feature actually works" | `verify-feature` |
 | A branch or codebase to sweep for quality | `review-suite` |
@@ -53,6 +55,8 @@ Then match the situation to the skill, with one line on why:
 | Opening a session on a project that already exists | `start` |
 | Session ending, on a repo with code | `handoff` |
 | Session ending, on a docs, training or planning repo | `update-docs` |
+| "What should the agent's setup learn from this session?" | `retro` - typed only, so tell the user to run `/retro` |
+| Writing or editing a skill, a `CLAUDE.md` or a doc agents read | `writing-for-agents` |
 
 **The first two rows split on size, not uncertainty.** Every new project feels uncertain, so
 uncertainty routes everything to `grill-me` and nothing to `wayfinder` - which is backwards. Ask

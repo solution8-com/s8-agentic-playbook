@@ -52,8 +52,8 @@ flowchart LR
   angles you hadn't considered.
 - **Then write it down.** [`to-spec`](../skills/to-spec/SKILL.md) turns the answers into a spec, and [`to-issues`](../skills/to-issues/SKILL.md) cuts it into
   tickets. Written decisions travel to tomorrow's session and to whoever checks the work. When the
-  spec needs a person to sign it off, [`visual-spec`](../skills/visual-spec/SKILL.md) renders it as
-  one page they can read without opening the repo.
+  spec needs a person to sign it off, send them the spec issue itself: it reads on GitHub without
+  opening the repo.
 - **Let the ticket carry "done".** Write what must be true at the end, and where the work would
   realistically break. Otherwise a reader can't tell finished from abandoned.
 

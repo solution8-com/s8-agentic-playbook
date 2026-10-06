@@ -86,7 +86,7 @@ people to skim doc changes.
    |---|---|
    | An architectural or convention change | `CLAUDE.md`, `AGENTS.md`; if it is a durable decision, the ADR row below |
    | A system-design change, in a repo that already keeps `docs/architecture.md` | That file (never create it) |
-   | New or sharpened domain terms | `CONTEXT.md` at the repo root - create it if it does not exist yet |
+   | New or sharpened domain terms | `GLOSSARY.md` at the repo root, or the older `CONTEXT.md` where the repo has one - create `GLOSSARY.md` if neither exists |
    | A decision that is hard to reverse, surprising without context, and a real trade-off - all three | An ADR under `docs/adr/` |
 
 3. **On an ADR, check first.** List the existing ADRs in `docs/adr/` and read their titles.

@@ -11,7 +11,7 @@ Gets a project ready to work in. It looks first, because the situations need dif
 new project has to be created, an existing one has to be understood, and a project with no code in
 it needs far less than one with code.
 
-**Every project gets** a repo, a slim `CLAUDE.md`, the `afk`/`hitl` issue labels, and somewhere for
+**Every project gets** a repo, a slim `CLAUDE.md`, the `needs-info`/`ready-for-agent` issue labels, and somewhere for
 tickets to live.
 
 **Projects with code also get** a stack, a dev environment, a commit gate and CI.
@@ -55,7 +55,7 @@ branch exists. Seed only:
 
 | Seeded | Why |
 |---|---|
-| Issue labels: `afk` `hitl` | `to-issues` stamps one on every slice: can a person walk away while this is built? `afk` for small, decision-free work, `hitl` where a decision is still plausible. Nothing gates on them. Type and severity are deliberately absent - GitHub gives you those and nothing here read them |
+| Issue labels: `needs-info` `ready-for-agent` | `to-issues` stamps one on every slice: is every decision made? `ready-for-agent` when an agent can build it with no questions, `needs-info` where a decision is still open. `orchestrate` grills on `needs-info` work, and `implement` may merge `ready-for-agent` work on green. Type and severity are deliberately absent - GitHub gives you those and nothing here read them |
 | A license | One file, and awkward to remember later |
 | The default branch | Nothing else works without it |
 
@@ -189,7 +189,7 @@ what you **verified**, not what you intended:
 | How the commit gate works and what it runs | So nobody re-derives it or works around it. Code projects only |
 | Repo-specific conventions that are not guessable from the code | The only part a human has to supply |
 
-**`CONTEXT.md` is deliberately not seeded.** Several skills read the domain glossary, but an
+**`GLOSSARY.md` is deliberately not seeded.** Several skills read the domain glossary, but an
 empty one is clutter the agent reads past every session, and the vocabulary does not exist yet on
 day one. Create it the first time a term is worth recording.
 
@@ -257,7 +257,7 @@ launch.
 Every project:
 
 - [ ] The repo exists under the owner the user named, with a default branch and a license
-- [ ] The `afk` and `hitl` issue labels exist
+- [ ] The `needs-info` and `ready-for-agent` issue labels exist
 - [ ] Where tickets live is settled - and written to `.claude/tracker.md` unless it is GitHub
 - [ ] A slim `CLAUDE.md` records what the repo is and the conventions a session cannot guess
 - [ ] The user knows what only a human can still do (secrets, deploy targets)

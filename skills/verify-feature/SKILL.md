@@ -75,4 +75,4 @@ behind, and anything your audit contradicted. After a fix-mode run, say which ch
 
 - **implement** - runs this for you when the diff touched UI, an endpoint or the database.
 - **review-suite** - the static counterpart, for quality sweeps rather than runtime proof.
-- **visual-spec** - the same report styling, for a spec rather than a verification.
+- **orchestrate** - runs this once per issue on the integration branch, after every builder has merged.

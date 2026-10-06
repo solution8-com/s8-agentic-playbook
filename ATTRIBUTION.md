@@ -12,7 +12,7 @@ Skills marked **verbatim** below are byte-identical to upstream. The one
 set-wide exception: Matt ships Codex sidecar YAMLs in some skills' `agents/`
 directories, which we do not adopt and strip on vendoring.
 
-We are pinned to `mattpocock/skills` v1.2.3, commit `8b78b53`, 2026-08-13, MIT. We do not
+We are pinned to `mattpocock/skills` v1.2.3, commit `8b78b53`, 2026-08-13, MIT. `orchestrate`, `pr`, `retro` and `writing-for-agents` come from v1.3.1+, commit `4588b32`, 2026-10-05. We do not
 track it continuously, and refresh deliberately instead. What changed in each tweaked skill is
 recorded internally rather than here.
 
@@ -32,20 +32,23 @@ recorded internally rather than here.
 | `to-issues` | mattpocock/skills (`to-tickets`), renamed and tweaked |
 | `pickup-issue` | Solution8 original |
 | `implement` | mattpocock/skills (`implement`), rewritten around a build subagent, his build steps kept inside the procedure |
+| `orchestrate` | Built on mattpocock/skills (`implement-spec`, v1.3): the integration branch and the frontier. The phases, the briefs and the run log are Solution8's own |
 | `wayfinder` | mattpocock/skills (`wayfinder`), tweaked |
 | `prototype` | mattpocock/skills (`prototype`), verbatim |
 | `research` | mattpocock/skills (`research`), verbatim |
-| `visual-spec` | Solution8 original |
 | `improve-codebase-architecture` | mattpocock/skills (`improve-codebase-architecture`), tweaked |
-| `diagnosing-bugs` | mattpocock/skills (`diagnosing-bugs`), verbatim |
+| `diagnosing-bugs` | mattpocock/skills (`diagnosing-bugs`), tweaked |
 | `wait-what` | mattpocock/skills (`wait-what`), tweaked |
 | `verify-feature` | Solution8 original |
-| `review-suite` | Solution8 original |
+| `review-suite` | Solution8 original. The `standards` pass takes its smell baseline from the Standards axis of mattpocock/skills (`code-review`) |
 | `suggest` | Solution8 original |
 | `wizard` | mattpocock/skills (`wizard`), verbatim |
 | `to-questionnaire` | mattpocock/skills (`to-questionnaire`), verbatim |
 | `handoff` | mattpocock/skills (`handoff`), tweaked |
 | `tdd` | mattpocock/skills (`tdd`), tweaked |
+| `pr` | mattpocock/skills (`pr`, v1.3), tweaked. Its Summary visuals come from Dex Horthy's `show-me` (humanlayer/skills, MIT), see `skills/pr/CREDITS.md` |
+| `retro` | mattpocock/skills (`retro`, v1.3), tweaked |
+| `writing-for-agents` | mattpocock/skills (`writing-for-agents`, v1.3), verbatim |
 | `start` | Solution8 original |
 | `update-docs` | Solution8 original |
 

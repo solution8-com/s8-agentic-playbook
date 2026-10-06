@@ -81,8 +81,9 @@ have and walks you through the rest.
 The repo is public, so this works for anyone. Installing ties you to this repo - no reinstall, no
 version pinning.
 
-**Updates are manual.** Claude Code does not update a third-party plugin by itself. To get the
-latest version, run `/plugin marketplace update solution8`, then `/plugin update s8-playbook@solution8`.
+**Updates are manual.** Claude Code does not update a third-party plugin by default. To get the
+latest version, run `claude plugin marketplace update solution8`, then
+`claude plugin update s8-playbook@solution8`.
 
 **What an update cannot do is reach a session that is already open.** Skills attach when a session
 starts, so restart or run `/reload-plugins` to pick one up. And treat the reload's own summary as

@@ -41,7 +41,7 @@ time, and nobody is signed up to it. Skills are tools: reach for the ones that h
 
 | Part | Where | What it gives you |
 |---|---|---|
-| **Skills** | [`skills/`](./skills/) | 26 ready-made ways of working, installed as one plugin that keeps itself up to date |
+| **Skills** | [`skills/`](./skills/) | 26 ready-made ways of working, installed as one plugin |
 | **Tools** | [`tools/`](./tools/README.md) | The CLIs and MCP servers worth having, with setup notes, plus a status line you can adopt as your own. None of it is required |
 | **Modules** | [`modules/`](./modules/) | Nine lessons on the principles, plus two hands-on guides. Read these to understand why the skills are shaped the way they are |
 
@@ -81,8 +81,8 @@ have and walks you through the rest.
 The repo is public, so this works for anyone. Installing ties you to this repo - no reinstall, no
 version pinning.
 
-**It keeps itself up to date.** New skills and fixes arrive without anyone running a command. To
-pull one immediately, `/plugin marketplace update solution8`.
+**Updates are manual.** Claude Code does not update a third-party plugin by itself. To get the
+latest version, run `/plugin marketplace update solution8`, then `/plugin update s8-playbook@solution8`.
 
 **What an update cannot do is reach a session that is already open.** Skills attach when a session
 starts, so restart or run `/reload-plugins` to pick one up. And treat the reload's own summary as
